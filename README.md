@@ -1,0 +1,2 @@
+# openfaas-templates
+OpenFaaS templates
