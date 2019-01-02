@@ -1,8 +1,8 @@
 FROM maven:3.6.0-jdk-8-alpine as builder
 
-WORKDIR /home/app
-COPY . /home/app/
-RUN mvn clean package && ls -la target
+WORKDIR /home/fn
+COPY function /home/fn/
+RUN mvn clean package
 
 FROM openjdk:8u121-jdk-alpine as ship
 RUN apk --no-cache add curl \
@@ -12,10 +12,10 @@ RUN apk --no-cache add curl \
     && apk del curl
 
 RUN addgroup -S app && adduser -S -g app app
-WORKDIR /home/app
-COPY --from=builder /home/app/target/app.jar ./app.jar
+WORKDIR /home/fn
+COPY --from=builder /home/fn/target/app.jar ./app.jar
 
-RUN chown -R app /home/app
+RUN chown -R app /home/fn
 USER app
 
 ENV MICRONAUT_SERVER_PORT=8081
