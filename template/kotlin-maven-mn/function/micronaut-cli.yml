@@ -1,5 +1,5 @@
 profile: service
-defaultPackage: sample
+defaultPackage: function
 ---
 testFramework: spek
 sourceLanguage: kotlin
