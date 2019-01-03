@@ -2,13 +2,13 @@ package sample
 
 import io.micronaut.runtime.Micronaut
 
-object Application {
+object Fn {
 
     @JvmStatic
     fun main(args: Array<String>) {
         Micronaut.build()
                 .packages("sample")
-                .mainClass(Application.javaClass)
+                .mainClass(Fn.javaClass)
                 .start()
     }
 }
