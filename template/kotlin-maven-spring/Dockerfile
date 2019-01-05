@@ -4,7 +4,7 @@ WORKDIR /home/fn
 COPY function /home/fn/
 RUN mvn clean package
 
-FROM openjdk:8u181-jre-alpine3.8 as ship
+FROM openjdk:8-jre-alpine as ship
 RUN apk --no-cache add curl \
     && echo "Pulling watchdog binary from Github." \
     && curl -sSL https://github.com/openfaas-incubator/of-watchdog/releases/download/0.4.6/of-watchdog > /usr/bin/fwatchdog \
@@ -22,7 +22,7 @@ USER fn
 ENV upstream_url="http://127.0.0.1:8081"
 ENV mode="http"
 
-ENV fprocess="java -Dserver.port=8081 -jar fn.jar"
+ENV fprocess="java -noverify -Dserver.port=8081 -jar fn.jar"
 EXPOSE 8080
 
 HEALTHCHECK --interval=2s CMD [ -e /tmp/.lock ] || exit 1
