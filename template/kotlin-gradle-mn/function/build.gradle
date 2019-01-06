@@ -43,6 +43,7 @@ dependencies {
 
 shadowJar {
     mergeServiceFiles()
+    archiveName = "fn.jar"
 }
 
 run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1')
