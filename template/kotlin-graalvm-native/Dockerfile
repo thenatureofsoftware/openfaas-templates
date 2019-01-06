@@ -2,7 +2,7 @@ FROM gradle:5.1.0-jdk8-alpine as builder
 USER root
 COPY function /home/fn/
 WORKDIR /home/fn
-RUN gradle build --no-daemon --console plain
+RUN gradle clean build --no-daemon --console plain
 
 FROM oracle/graalvm-ce:1.0.0-rc10 as native
 WORKDIR /home/fn

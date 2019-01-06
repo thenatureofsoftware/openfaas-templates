@@ -14,8 +14,6 @@ plugins {
     application
 }
 
-val mainClassName = "function.AppKt"
-
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
@@ -35,7 +33,7 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = "function.AppKt"
+    mainClassName = "function.FnKt"
 }
 
 tasks.withType<ShadowJar> {
